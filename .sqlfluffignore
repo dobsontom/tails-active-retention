@@ -1,0 +1,5 @@
+# Ignore anything in the target directory
+target/*
+
+# Ignore sandbox query which is ignored by dbt
+sandbox_query.sql
