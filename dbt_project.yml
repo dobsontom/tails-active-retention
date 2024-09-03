@@ -1,7 +1,7 @@
-name: "tails_challenge"
+name: "tails_active_retention"
 version: "1.0.0"
 
-profile: "tails_challenge"
+profile: "tails_active_retention"
 
 model-paths: ["models"]
 analysis-paths: ["analyses"]
