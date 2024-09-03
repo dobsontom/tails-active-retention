@@ -9,6 +9,7 @@ test-paths: ["tests"]
 clean-targets:
   - "target"
   - "dbt_packages"
+  - "logs"
 
 # The analytics_engineer_interview_role does not have the necessary permissions
 # to materialise models in Snowflake. To ensure the project can still run, 
