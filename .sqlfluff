@@ -1,38 +1,12 @@
 [sqlfluff]
 dialect = snowflake
 templater = dbt
-runaway_limit = 10
+rules = L004,L010,L011,L014,L018,L023,L024,L025,L026,L033,L035,L040,L043,L045,L047,L048
+exclude_rules = L009
 processes = 0
-max_line_length = 80
-indent_unit = space
 
-[sqlfluff:indentation]
-tab_space_size = 4
-
-[sqlfluff:layout:type:comma]
-spacing_before = touch
-line_position = trailing
-
-[sqlfluff:rules:capitalisation.keywords] 
+[sqlfluff:rules:capitalisation.keywords]
 capitalisation_policy = lower
-
-[sqlfluff:rules:aliasing.table]
-aliasing = explicit
-
-[sqlfluff:rules:aliasing.column]
-aliasing = explicit
-
-[sqlfluff:rules:aliasing.expression]
-allow_scalar = False
 
 [sqlfluff:rules:capitalisation.identifiers]
-extended_capitalisation_policy = lower
-
-[sqlfluff:rules:capitalisation.functions]
 capitalisation_policy = lower
-
-[sqlfluff:rules:capitalisation.literals]
-capitalisation_policy = lower
-
-[sqlfluff:rules:ambiguous.column_references]  # Number in group by
-group_by_and_order_by_style = implicit
