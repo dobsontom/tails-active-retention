@@ -9,5 +9,60 @@ sources:
     tables:
       - name: tails_default__subscription
         description: "Source for subscriptions data."
+        columns:
+          - name: subscription_id
+            description: "Unique identifier for each subscription."
+          - name: customer_id
+            description: "Unique identifier for each customer who owns the subscription."
+          - name: pet_id
+            description: "Unique identifier for each pet associated with the subscription."
+          - name: type
+            description: "The type of subscription (e.g., food, medicine)."
+          - name: status
+            description: "The current status of the subscription (e.g., active, paused, cancelled, incomplete, pending)."
+          - name: start_datetime
+            description: "The timestamp when the subscription started."
+          - name: end_datetime
+            description: "The timestamp when the subscription ended, if applicable."
+          - name: created_datetime
+            description: "The timestamp when the subscription record was created."
+          - name: last_modified_datetime
+            description: "The timestamp when the subscription record was last modified."
+          - name: order_days
+            description: "The number of days worth of product provided in the subscription."
+          - name: tier
+            description: "The tier or level of the subscription (e.g., mid, premium, superpremium)."
+          - name: scheduled_next_delivery_date
+            description: "The scheduled date for the next delivery."
+          - name: fixed_revenue
+            description: "The fixed revenue amount associated with the subscription."
+          - name: dry
+            description: "Boolean flag indicating if the subscription includes dry food."
+          - name: wet
+            description: "Boolean flag indicating if the subscription includes wet food."
+          - name: suspended
+            description: "Boolean flag indicating if the subscription is currently suspended."
+          - name: trial_days
+            description: "The number of trial days associated with the trial subscription."
+          - name: fulfilment_date
+            description: "The date when the subscription was fulfilled."
+          - name: scheduled_next_billing_datetime
+            description: "The timestamp for the next scheduled billing."
+          - name: pricing_set_id
+            description: "The ID for the pricing set associated with the subscription."
+
       - name: tails_default__pet
         description: "Source for pets data."
+        columns:
+          - name: pet_id
+            description: "Unique identifier for each pet."
+          - name: customer_id
+            description: "Unique identifier for each customer who owns the pet."
+          - name: pet_created_datetime
+            description: "The timestamp when the pet record was created."
+          - name: dob
+            description: "The birth date of the pet."
+          - name: converted
+            description: "The date when the pet's owner converted to a paying customer."
+          - name: gender
+            description: "The gender of the pet."
