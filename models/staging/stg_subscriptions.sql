@@ -10,7 +10,7 @@ select
     CAST(pet_id as STRING) as pet_id,  -- Foreign key
     CAST(customer_id as STRING) as customer_id,  -- Foreign key
     subscription_type,
-    status,
+    status as subscription_status, -- Rename to avoid reserved word in ASNI SQL
     start_datetime as start_at,
     end_datetime as end_at,
     created_datetime as created_at,
