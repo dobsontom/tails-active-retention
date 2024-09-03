@@ -9,3 +9,6 @@ logs/
 
 # Ignore the sandbox query
 sandbox_query.sql
+
+# Ignore workspace settings
+settings.json
