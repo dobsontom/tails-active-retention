@@ -1,4 +1,11 @@
-
+# Ignore the target directory where compiled files are stored
 target/
+
+# Ignore the dbt packages directory
 dbt_packages/
+
+# Ignore log files
 logs/
+
+# Ignore the sandbox query file
+sandbox_query.sql
