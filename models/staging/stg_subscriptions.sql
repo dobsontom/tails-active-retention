@@ -27,4 +27,4 @@ select
     scheduled_next_billing_datetime as scheduled_next_billing_at,
     pricing_set_id
 from
-    source;
+    source

@@ -14,4 +14,4 @@ select
     gender as pet_gender,
     converted as converted_date
 from
-    source;
+    source
