@@ -1,11 +1,17 @@
+with source as (
+    select
+        *
+    from {{ source('analytics_engineer', 'tails_default__pet') }}
+)
+
 select
-    -- Cast primary and foreign keys to strings
-    CAST(pet_id AS STRING), -- Primary key
-    CAST(customer_id AS STRING), -- Foreign key
-    -- Rename date and timestamp fields to conform to best practice
-    pet_created_datetime AS pet_created_at,
-    dob AS birth_date,
-    gender,
-    converted AS converted_date
+    -- Cast primary and foreign keys to strings as per best practice
+    CAST(pet_id as STRING) as pet_id,
+    CAST(customer_id as STRING) as customer_id,
+    -- Rename date and timestamp fields as per best practice
+    pet_created_datetime as pet_created_at,
+    dob as birth_date,
+    converted as converted_date,
+    gender
 from
-    challenge.analytics_engineer.tails_default__pet;
+    source;
