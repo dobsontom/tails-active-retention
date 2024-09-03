@@ -1,0 +1,9 @@
+select
+    pet_id,
+    customer_id,
+    pet_created_datetime,
+    dob,
+    gender,
+    converted
+from
+    challenge.analytics_engineer.tails_default__pet;

@@ -1,0 +1,23 @@
+select
+    subscription_id,
+    pet_id,
+    customer_id,
+    subscription_type,
+    status,
+    start_datetime,
+    end_datetime,
+    created_datetime,
+    last_modified_datetime,
+    order_days,
+    tier,
+    scheduled_next_delivery_date,
+    fixed_revenue,
+    dry,
+    wet,
+    suspended,
+    trial_days,
+    fulfilment_date,
+    scheduled_next_billing_datetime,
+    pricing_set_id
+from
+    challenge.analytics_engineer.tails_default__subscription;
