@@ -1,14 +1,10 @@
-# Ignore the target directory where compiled files are stored
+# Ignore directories
 target/
-
-# Ignore the dbt packages directory
 dbt_packages/
-
-# Ignore log files
 logs/
 
-# Ignore the sandbox query
+# Ignore specific files
 sandbox_query.sql
-
-# Ignore workspace settings
 settings.json
+.dbtignore
+dbt.exe
