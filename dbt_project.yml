@@ -10,6 +10,10 @@ clean-targets:
   - "target"
   - "dbt_packages"
 
+# The analytics_engineer_interview_role does not have the necessary permissions
+# to materialise models in Snowflake. To ensure the project can still run, 
+# ephemeral materialisation is used. Note that this approach is for demonstration
+# purposes and would typically not be used in a production environment.
 models:
   tails_active_retention:
-    +materialized: view
+    +materialized: ephemeral
