@@ -12,6 +12,6 @@ select
     pet_created_datetime as pet_created_at,
     dob as pet_birth_date,
     gender as pet_gender,
-    converted as converted_date,
+    converted as converted_date
 from
     source;
