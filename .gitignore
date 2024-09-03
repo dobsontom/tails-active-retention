@@ -7,5 +7,5 @@ dbt_packages/
 # Ignore log files
 logs/
 
-# Ignore the sandbox query directory
-sandbox/
+# Ignore the sandbox query
+sandbox_query.sql
