@@ -4,16 +4,12 @@ version: "1.0.0"
 profile: "tails_active_retention"
 
 model-paths: ["models"]
-analysis-paths: ["analyses"]
 test-paths: ["tests"]
-seed-paths: ["seeds"]
-macro-paths: ["macros"]
-snapshot-paths: ["snapshots"]
 
 clean-targets:
   - "target"
   - "dbt_packages"
 
 models:
-  tails_challenge:
+  tails_active_retention:
     +materialized: view
