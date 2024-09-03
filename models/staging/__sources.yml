@@ -1,0 +1,9 @@
+sources:
+  - name: analytics_engineer
+    database: challenge
+    schema: analytics_engineer
+    tables:
+      - name: tails_default__subscription
+        description: "Source data for subscriptions"
+      - name: tails_default__pet
+        description: "Source data for pets"
