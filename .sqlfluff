@@ -2,6 +2,7 @@
 dialect = snowflake
 templater = dbt
 runaway_limit = 10
+processes = 0
 max_line_length = 80
 indent_unit = space
 
