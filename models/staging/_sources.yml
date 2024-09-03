@@ -1,9 +1,13 @@
+version: 2
+
 sources:
   - name: analytics_engineer
+    description: "Source data for Tails.com's Retention and Active Dogs Challenge."
+    loader: snowflake
     database: challenge
     schema: analytics_engineer
     tables:
       - name: tails_default__subscription
-        description: "Source data for subscriptions"
+        description: "Source for subscriptions data."
       - name: tails_default__pet
-        description: "Source data for pets"
+        description: "Source for pets data."
