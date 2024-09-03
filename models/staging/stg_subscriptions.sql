@@ -5,12 +5,13 @@ with source as (
 )
 
 select
-    -- Cast primary and foreign keys to strings as per best practice
+    -- Cast primary and foreign keys to STRING for consitency across models
     CAST(subscription_id as STRING) as subscription_id,  -- Primary key
     CAST(pet_id as STRING) as pet_id,  -- Foreign key
     CAST(customer_id as STRING) as customer_id,  -- Foreign key
     subscription_type,
-    status as subscription_status, -- Rename to avoid reserved word in ANSI SQL
+    status as subscription_status, -- Renaming to avoid using a reserved word in ANSI SQL
+    -- Rename date and timestamp fields for consistency
     start_datetime as start_at,
     end_datetime as end_at,
     created_datetime as created_at,
