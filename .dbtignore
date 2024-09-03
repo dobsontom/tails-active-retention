@@ -1,0 +1,2 @@
+# Ignore sandbox query used for testing
+models/sandbox_query.sql
