@@ -43,3 +43,7 @@ select
     converted_date
 from
     active_days_cte
+-- Sorting would not typically be included in a real model
+-- but is included here for demonstrative purposes
+order by
+    subscription_id, active_day
