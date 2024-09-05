@@ -4,7 +4,7 @@ with trial_subscriptions as (
         sub.customer_id,
         sub.pet_id,
         sub.subscription_type,
-        sub.start_at,
+        sub.start_at as trial_start_at,
         -- Calculate the trial end date, accounting for both converted and non-converted trials
         case
         -- If there is a converted_date, take the earliest of converted_date and the start date plus the trial length
@@ -31,7 +31,7 @@ select
     customer_id,
     pet_id,
     subscription_type,
-    start_at,
+    trial_start_at,
     trial_end_at,
     converted_date,
     trial_days
