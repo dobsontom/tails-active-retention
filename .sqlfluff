@@ -1,7 +1,7 @@
 [sqlfluff]
 dialect = snowflake
 templater = dbt
-rules = L004,L010,L011,L014,L018,L023,L024,L025,L026,L033,L035,L040,L043,L045,L047,L048
+rules = L004,L010,L011,L014,L018,L023,L024,L025,L026,L033,L035,L040,L043,L045,L047,L048,LT05,AM05
 exclude_rules = L009
 processes = 0
 
