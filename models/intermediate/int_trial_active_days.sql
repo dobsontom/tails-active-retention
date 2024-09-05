@@ -38,14 +38,9 @@ select
     subscription_id,
     customer_id,
     pet_id,
-    active_day, -- Key date for each row, one per day between trial start and end
+    active_day,  -- Key date for each row, one per day between trial start and end
     trial_start_at,
     trial_end_at,
     converted_date
 from
     active_days_cte
-
--- Sorting would not typically be included in a real model
--- but is included here for demonstrative purposes
-order by
-    subscription_id, active_day
