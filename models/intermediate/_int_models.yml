@@ -2,7 +2,7 @@ version: 2
 
 models:
   - name: int_trial_subscriptions
-    description: "Intermediate table for trial subscriptions, including trial start and end dates, and conversion data."
+    description: "Intermediate table for trial subscriptions, including trial start and end and conversion dates. Filters records to a dynamic five-year window based on subscription start date."
     columns:
       - name: subscription_id
         description: "Unique identifier for the subscription."
