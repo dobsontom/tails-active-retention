@@ -1,6 +1,6 @@
 # Tails.com Retention and Active Dogs Challenge
 
-This project is built using dbt to track and analyse the number of active trialists and converted pets for Tails.com. The models are designed to help the business understand customer retention and the behaviour of trialists over time. The project follows a star schema structure with fact and dimension tables, focusing on ease of analysis, scalability, and efficiency for downstream reporting in tools like Tableau.
+This project is built using dbt to track and analyse the number of active trialists and converted pets for [Tails.com](https://tails.com/gb/). The models are designed to help the business understand customer retention and the behaviour of trialists over time. The project follows a star schema structure with fact and dimension tables, focusing on ease of analysis, scalability, and efficiency for downstream reporting in tools like Tableau.
 
 ## Documentation
 
