@@ -1,0 +1,103 @@
+version: 2
+
+models:
+  - name: fct_trial_activity
+    description: "Fact table for analysing daily active trialists and conversion events for each subscription."
+    columns:
+      - name: subscription_id
+        description: "Unique identifier for each subscription."
+        tests:
+          - not_null
+          - unique
+      - name: customer_id
+        description: "Foreign key linking to the customer."
+        tests:
+          - not_null
+      - name: pet_id
+        description: "Foreign key linking to the pet."
+        tests:
+          - not_null
+      - name: active_day
+        description: "The date for each day the trial is active or converted."
+        tests:
+          - not_null
+      - name: trial_start_at
+        description: "The start date of the trial."
+      - name: trial_end_at
+        description: "The end date of the trial."
+      - name: converted_date
+        description: "The date the trial was converted to a full subscription."
+      - name: active_trial_flag
+        description: "Flag indicating whether this day is part of an active trial."
+      - name: converted_flag
+        description: "Flag indicating whether this day marks the conversion of a trial to a full subscription."
+
+  - name: dim_subscriptions
+    description: "Dimension table for subscription details, including subscription type, status, and various metadata fields."
+    columns:
+      - name: subscription_id
+        description: "Primary key for the subscription dimension."
+        tests:
+          - not_null
+          - unique
+      - name: customer_id
+        description: "Foreign key linking to the customer."
+        tests:
+          - not_null
+      - name: pet_id
+        description: "Foreign key linking to the pet."
+        tests:
+          - not_null
+      - name: subscription_type
+        description: "The type of the subscription (e.g., food, medicine)."
+      - name: subscription_status
+        description: "The current status of the subscription (e.g., active, cancelled)."
+      - name: tier
+        description: "The subscription tier or level (e.g., mid, premium, superpremium)."
+      - name: pricing_set_id
+        description: "The pricing set associated with the subscription."
+      - name: subscription_start_at
+        description: "The start date of the subscription."
+      - name: subscription_end_at
+        description: "The end date of the subscription."
+      - name: subscription_created_at
+        description: "The creation timestamp for the subscription record."
+      - name: last_modified_at
+        description: "The timestamp when the subscription record was last modified."
+      - name: order_days
+        description: "The number of days' worth of product in the subscription."
+      - name: fixed_revenue
+        description: "The fixed revenue amount for the subscription."
+      - name: trial_days
+        description: "The number of days in the trial period."
+      - name: scheduled_next_delivery_date
+        description: "The scheduled date for the next delivery."
+      - name: fulfilment_date
+        description: "The date the subscription was fulfilled."
+      - name: scheduled_next_billing_at
+        description: "The timestamp for the next scheduled billing."
+      - name: dry
+        description: "Boolean flag indicating if the subscription includes dry food."
+      - name: wet
+        description: "Boolean flag indicating if the subscription includes wet food."
+      - name: suspended
+        description: "Boolean flag indicating if the subscription is currently suspended."
+
+  - name: dim_pets
+    description: "Dimension table for pets, containing pet-specific details such as gender, birth date, and created timestamp."
+    columns:
+      - name: pet_id
+        description: "Primary key for the pet dimension."
+        tests:
+          - not_null
+          - unique
+      - name: customer_id
+        description: "Foreign key linking to the customer who owns the pet."
+        tests:
+          - not_null
+      - name: pet_gender
+        description: "The gender of the pet."
+      - name: pet_birth_date
+        description: "The birth date of the pet."
+      - name: pet_created_at
+        description: "The timestamp when the pet record was created."
