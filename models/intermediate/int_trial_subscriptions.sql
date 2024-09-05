@@ -9,11 +9,7 @@ with trial_subscriptions as (
         -- date plus the number of trial days if there was no conversion.
         COALESCE(pets.converted_date, DATEADD(day, sub.trial_days, sub.start_at)) as trial_end_at,
         pets.converted_date,
-        sub.trial_days,
-        sub.tier,
-        sub.dry,
-        sub.wet,
-        sub.pricing_set_id
+        sub.trial_days
     from
         {{ ref('stg_subscriptions') }} as sub
     join
@@ -25,7 +21,7 @@ with trial_subscriptions as (
         sub.trial_days is not NULL
 )
 
--- Select relevant fields to be used in downstream fact tables.
+-- Select relevant fields to be used in downstream fact table.
 select
     subscription_id,
     customer_id,
@@ -34,12 +30,6 @@ select
     start_at,
     trial_end_at,
     converted_date,
-    trial_days,
-    -- Include the following fields to enable filtering and breakdowns in
-    -- downstream BI tools.
-    tier,
-    dry,
-    wet,
-    pricing_set_id
+    trial_days
 from
     trial_subscriptions
