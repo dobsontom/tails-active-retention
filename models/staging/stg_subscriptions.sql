@@ -5,10 +5,10 @@ with source as (
 )
 
 select
-    -- Cast primary and foreign keys to STRING for consitency across models
+    -- Cast primary and foreign keys to STRING for consistency across models
     CAST(subscription_id as STRING) as subscription_id,  -- Primary key
-    CAST(pet_id as STRING) as pet_id,  -- Foreign key
-    CAST(customer_id as STRING) as customer_id,  -- Foreign key
+    CAST(pet_id as STRING) as pet_id,                    -- Foreign key
+    CAST(customer_id as STRING) as customer_id,          -- Foreign key
     subscription_type,
     status as subscription_status, -- Renaming to avoid using a reserved word in ANSI SQL
     -- Rename date and timestamp fields for consistency
@@ -18,13 +18,13 @@ select
     last_modified_datetime as last_modified_at,
     order_days,
     tier,
-    scheduled_next_delivery_date,
+    trial_days,
     fixed_revenue,
     dry,
     wet,
     suspended,
-    trial_days,
     fulfilment_date,
+    scheduled_next_delivery_date,
     scheduled_next_billing_datetime as scheduled_next_billing_at,
     pricing_set_id
 from
