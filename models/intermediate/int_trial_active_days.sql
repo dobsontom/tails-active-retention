@@ -1,12 +1,13 @@
--- Use recursion to generate a row for every every day between
+-- Use recursion to generate a row for every day between
 -- the trial start and trial end date for each subscription
 with recursive active_days_cte as (
-    -- Use start_at as the base
+
+    -- Base case: select the starting active day (trial start date) for each subscription
     select
         sub.subscription_id,
         sub.customer_id,
         sub.pet_id,
-        sub.start_at as active_day,
+        CAST(sub.trial_start_at as DATE) as active_day,  -- Initial active day is the trial start date
         sub.trial_start_at,
         sub.trial_end_at,
         sub.converted_date
@@ -15,30 +16,28 @@ with recursive active_days_cte as (
 
     union all
 
-    -- Add one day to the active day until it equals the trial
-    -- end date, then repeat for the next subscription
+    -- Recursive step: Add one day to the active day for each subscription
+    -- and repeat the process until active_day equals trial_end_at
     select
-        sub.subscription_id,
-        sub.customer_id,
-        sub.pet_id,
-        DATEADD(day, 1, cte.active_day) as active_day,
-        sub.trial_start_at,
-        sub.trial_end_at,
-        sub.converted_date
+        cte.subscription_id,
+        cte.customer_id,
+        cte.pet_id,
+        DATEADD(day, 1, cte.active_day) as active_day,  -- Increment the active day by one
+        cte.trial_start_at,
+        cte.trial_end_at,
+        cte.converted_date
     from
         active_days_cte as cte
-    join
-        {{ ref('int_trial_subscriptions') }} as sub
-        on cte.subscription_id = sub.subscription_id
     where
-        CAST(cte.active_day as DATE) <= CAST(sub.trial_end_at as DATE)
+        cte.active_day < CAST(cte.trial_end_at as DATE)  -- Stop the recursion when active_day reaches trial_end_at
 )
--- Select relevant fields for downstream analysis
+
+-- Select relevant fields for downstream fact table
 select
     subscription_id,
     customer_id,
     pet_id,
-    active_day,
+    active_day, -- Key date for each row, one per day between trial start and end
     trial_start_at,
     trial_end_at,
     converted_date
