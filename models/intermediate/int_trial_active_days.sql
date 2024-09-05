@@ -4,9 +4,10 @@ with recursive active_days_cte as (
 
     -- Base case: select the starting active day (trial start date) for each subscription
     select
-        sub.subscription_id,
-        sub.customer_id,
-        sub.pet_id,
+        -- Cast primary and foreign keys to STRING for consistency across models
+        CAST(sub.subscription_id as STRING) as subscription_id,
+        CAST(sub.customer_id as STRING) as customer_id,
+        CAST(sub.pet_id as STRING) as pet_id,
         CAST(sub.trial_start_at as DATE) as active_day,  -- Initial active day is the trial start date
         sub.trial_start_at,
         sub.trial_end_at,
@@ -19,9 +20,9 @@ with recursive active_days_cte as (
     -- Recursive step: Add one day to the active day for each subscription
     -- and repeat the process until active_day equals trial_end_at
     select
-        cte.subscription_id,
-        cte.customer_id,
-        cte.pet_id,
+        CAST(cte.subscription_id as STRING) as subscription_id,
+        CAST(cte.customer_id as STRING) as customer_id,
+        CAST(cte.pet_id as STRING) as pet_id,
         DATEADD(day, 1, cte.active_day) as active_day,  -- Increment the active day by one
         cte.trial_start_at,
         cte.trial_end_at,

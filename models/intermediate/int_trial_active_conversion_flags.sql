@@ -1,9 +1,10 @@
 -- Apply flags for active trial and conversion
 with apply_flags as (
     select
-        subscription_id,
-        customer_id,
-        pet_id,
+        -- Cast primary and foreign keys to STRING for consistency across models
+        CAST(subscription_id as STRING) as subscription_id,
+        CAST(customer_id as STRING) as customer_id,
+        CAST(pet_id as STRING) as pet_id,
         trial_start_at,
         active_day,
         -- Active trial flag: If no conversion occurred, flag all days. Otherwise, flag days before the conversion
