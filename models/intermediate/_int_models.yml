@@ -2,7 +2,7 @@ version: 2
 
 models:
   - name: int_trial_subscriptions
-    description: "Intermediate table for trial subscriptions with trial start and end dates."
+    description: "Intermediate table for trial subscriptions, including trial start and end dates, and conversion data."
     columns:
       - name: subscription_id
         description: "Unique identifier for the subscription."
@@ -22,14 +22,14 @@ models:
         tests:
           - not_null
       - name: trial_end_at
-        description: "The date the trial ended."
+        description: "The date the trial ended or was scheduled to end."
       - name: converted_date
-        description: "The date the trial was converted to a full subscription."
+        description: "The date the trial was converted to a full subscription, if applicable."
       - name: trial_days
         description: "The number of days in the trial period."
 
   - name: int_trial_active_days
-    description: "Intermediate table generating daily rows for each active day between trial start and end."
+    description: "Intermediate table generating daily records for each active trial day between the trial start and end dates."
     columns:
       - name: subscription_id
         description: "Unique identifier for the subscription."
@@ -44,18 +44,18 @@ models:
         tests:
           - not_null
       - name: active_day
-        description: "The active trial day for the subscription."
+        description: "A daily record representing an active trial day for the subscription."
         tests:
           - not_null
       - name: trial_start_at
         description: "The start date of the trial."
       - name: trial_end_at
-        description: "The end date of the trial."
+        description: "The scheduled or actual end date of the trial."
       - name: converted_date
-        description: "The date the trial was converted to a full subscription."
+        description: "The date the trial was converted to a full subscription, if applicable."
 
   - name: int_active_conversion_flags
-    description: "Intermediate table applying flags for active trial days and conversions."
+    description: "Intermediate table applying flags to each trial day indicating whether the trial was active and whether a conversion occurred."
     columns:
       - name: subscription_id
         description: "Unique identifier for the subscription."
@@ -70,10 +70,10 @@ models:
         tests:
           - not_null
       - name: active_day
-        description: "The active trial day for the subscription."
+        description: "A daily record representing an active trial day for the subscription."
         tests:
           - not_null
       - name: active_trial_flag
-        description: "Flag indicating whether the subscription was in an active trial on the active day."
+        description: "Flag indicating whether the subscription was part of an active trial on the active day."
       - name: converted_flag
-        description: "Flag indicating whether the subscription was converted on the active day."
+        description: "Flag indicating whether the subscription was converted to a full subscription on the active day."
