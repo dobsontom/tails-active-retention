@@ -1,0 +1,79 @@
+version: 2
+
+models:
+  - name: int_trial_subscriptions
+    description: "Intermediate table for trial subscriptions with trial start and end dates."
+    columns:
+      - name: subscription_id
+        description: "Unique identifier for the subscription."
+        tests:
+          - not_null
+          - unique
+      - name: customer_id
+        description: "Foreign key linking to the customer table."
+        tests:
+          - not_null
+      - name: pet_id
+        description: "Foreign key linking to the pet table."
+        tests:
+          - not_null
+      - name: trial_start_at
+        description: "The date the trial started."
+        tests:
+          - not_null
+      - name: trial_end_at
+        description: "The date the trial ended."
+      - name: converted_date
+        description: "The date the trial was converted to a full subscription."
+      - name: trial_days
+        description: "The number of days in the trial period."
+
+  - name: int_trial_active_days
+    description: "Intermediate table generating daily rows for each active day between trial start and end."
+    columns:
+      - name: subscription_id
+        description: "Unique identifier for the subscription."
+        tests:
+          - not_null
+      - name: customer_id
+        description: "Foreign key linking to the customer table."
+        tests:
+          - not_null
+      - name: pet_id
+        description: "Foreign key linking to the pet table."
+        tests:
+          - not_null
+      - name: active_day
+        description: "The active trial day for the subscription."
+        tests:
+          - not_null
+      - name: trial_start_at
+        description: "The start date of the trial."
+      - name: trial_end_at
+        description: "The end date of the trial."
+      - name: converted_date
+        description: "The date the trial was converted to a full subscription."
+
+  - name: int_active_conversion_flags
+    description: "Intermediate table applying flags for active trial days and conversions."
+    columns:
+      - name: subscription_id
+        description: "Unique identifier for the subscription."
+        tests:
+          - not_null
+      - name: customer_id
+        description: "Foreign key linking to the customer table."
+        tests:
+          - not_null
+      - name: pet_id
+        description: "Foreign key linking to the pet table."
+        tests:
+          - not_null
+      - name: active_day
+        description: "The active trial day for the subscription."
+        tests:
+          - not_null
+      - name: active_trial_flag
+        description: "Flag indicating whether the subscription was in an active trial on the active day."
+      - name: converted_flag
+        description: "Flag indicating whether the subscription was converted on the active day."
