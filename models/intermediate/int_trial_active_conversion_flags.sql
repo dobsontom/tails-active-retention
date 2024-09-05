@@ -6,7 +6,10 @@ with apply_flags as (
         CAST(customer_id as STRING) as customer_id,
         CAST(pet_id as STRING) as pet_id,
         trial_start_at,
+        trial_end_at,
+        converted_date,
         active_day,
+
         -- Active trial flag: If no conversion occurred, flag all days. Otherwise, flag days before the conversion
         case
             when converted_date is NULL then 1
@@ -28,8 +31,10 @@ select
     customer_id,
     pet_id,
     trial_start_at,
+    trial_end_at,
+    converted_date,
     active_day,
     active_trial_flag,  -- Indicates whether this day is part of an active trial
-    converted_flag  -- Indicates whether this day had a conversion
+    converted_flag      -- Indicates whether this day had a conversion
 from
     apply_flags
