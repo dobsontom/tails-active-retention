@@ -77,4 +77,4 @@ This dbt project includes the following tests:
 1. Clone the repository.
 2. Install `dbt-core` and `dbt-snowflake` using pip.
 3. Configure your `profiles.yml` file to match the connection settings for your environment.
-4. Run the dbt models to generate the final data mart.
+4. Use `dbt run` to generate the final data mart.
