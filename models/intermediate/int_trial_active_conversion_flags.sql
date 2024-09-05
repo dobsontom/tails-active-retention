@@ -1,9 +1,10 @@
 -- Apply flags for active trial and conversion
-with flags as (
+with apply_flags as (
     select
         subscription_id,
         customer_id,
         pet_id,
+        trial_start_at,
         active_day,
         -- Active trial flag: If no conversion occurred, flag all days. Otherwise, flag days before the conversion
         case
@@ -25,8 +26,9 @@ select
     subscription_id,
     customer_id,
     pet_id,
+    trial_start_at,
     active_day,
     active_trial_flag,  -- Indicates whether this day is part of an active trial
     converted_flag  -- Indicates whether this day had a conversion
 from
-    flags
+    apply_flags
