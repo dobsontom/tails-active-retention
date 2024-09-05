@@ -8,8 +8,8 @@ with trial_subscriptions as (
 
         -- Calculate the trial end date
         case
-            -- If there is a converted_date, take the earliest of converted_date and 
-            -- the start date plus the trial length
+            -- If there is a converted_date, take the earliest of converted_date 
+            -- and the start date plus the trial length
             when
                 pets.converted_date is not NULL
                 then LEAST(pets.converted_date, DATEADD(day, sub.trial_days, sub.start_at))
@@ -23,9 +23,9 @@ with trial_subscriptions as (
         {{ ref('stg_subscriptions') }} as sub
     inner join
         {{ ref('stg_pets') }} as pets
-        on CAST(sub.pet_id as STRING) = CAST(pets.pet_id as STING)
-    -- Since we're only concerned with active and converted trials, we can 
-    -- filter to subscriptions with a trial_days value
+        on CAST(sub.pet_id as STRING) = CAST(pets.pet_id as STRING)
+    -- Since we're only concerned with active and converted trials, we filter 
+    -- to subscriptions with a trial_days value
     where
         sub.trial_days is not NULL
 )
