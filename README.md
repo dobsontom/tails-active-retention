@@ -46,12 +46,12 @@ tails-active-retention
 
 ### Key Models
 
-1. **Staging Models (`stg_`)**: These models serve as the first layer, cleaning and preparing raw data from the source tables.
+1. **Staging Models (`stg_`)**: These models serve as the first layer, cleaning and preparing raw data from the source tables in Snowflake.
    - `stg_pets`: Cleans and prepares data from the `tails_default__pet` source table.
    - `stg_subscriptions`: Cleans and prepares data from the `tails_default__subscription` source table.
 
 2. **Intermediate Models (`int_`)**: Intermediate models transform the staging data, applying business logic to track trials and conversions over time.
-   - `int_trial_subscriptions`: Calculates trial start and end dates, considering conversion events from both pets and subscriptions.
+   - `int_trial_subscriptions`: Calculates trial start and end dates, and joins conversion dates from `stg_pets`.
    - `int_trial_active_days`: Uses recursion to generate rows for each active day between trial start and end dates for each subscription.
    - `int_active_conversion_flags`: Applies flags indicating active trial days and conversion events for each subscription on a daily basis.
 
@@ -77,11 +77,4 @@ This dbt project includes the following tests:
 1. Clone the repository.
 2. Install dbt and any required dependencies.
 3. Configure your `profiles.yml` file to match the connection settings for your environment.
-4. Run the dbt models to generate the final tables:
-
-5. To ensure data quality, execute the dbt tests:
-
-   ```bash
-   dbt test
-    ```
-
+4. Run the dbt models to generate the final data mart.
