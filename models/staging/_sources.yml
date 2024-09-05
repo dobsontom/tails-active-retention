@@ -8,7 +8,7 @@ sources:
     schema: analytics_engineer
     tables:
       - name: tails_default__subscription
-        description: "Source for subscriptions data."
+        description: "Source for subscriptions data, including details on subscription types, statuses, and other key information."
         columns:
           - name: subscription_id
             description: "Unique identifier for each subscription."
@@ -16,7 +16,7 @@ sources:
             description: "Unique identifier for each customer who owns the subscription."
           - name: pet_id
             description: "Unique identifier for each pet associated with the subscription."
-          - name: type
+          - name: subscription_type
             description: "The type of subscription (e.g., food, medicine)."
           - name: status
             description: "The current status of the subscription (e.g., active, paused, cancelled, incomplete, pending)."
@@ -37,11 +37,11 @@ sources:
           - name: fixed_revenue
             description: "The fixed revenue amount associated with the subscription."
           - name: dry
-            description: "Boolean flag indicating if the subscription includes dry food."
+            description: "Boolean flag indicating whether the subscription includes dry food."
           - name: wet
-            description: "Boolean flag indicating if the subscription includes wet food."
+            description: "Boolean flag indicating whether the subscription includes wet food."
           - name: suspended
-            description: "Boolean flag indicating if the subscription is currently suspended."
+            description: "Boolean flag indicating whether the subscription is currently suspended."
           - name: trial_days
             description: "The number of trial days associated with the trial subscription."
           - name: fulfilment_date
@@ -52,7 +52,7 @@ sources:
             description: "The ID for the pricing set associated with the subscription."
 
       - name: tails_default__pet
-        description: "Source for pets data."
+        description: "Source for pets data, including details on each pet's birth date, creation date, and ownership information."
         columns:
           - name: pet_id
             description: "Unique identifier for each pet."
