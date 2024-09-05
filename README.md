@@ -4,7 +4,7 @@ This project is built using dbt to track and analyse the number of active triali
 
 ## Documentation
 
-View the full dbt documentation [here](https://dobsontom.github.io/tails-active-retention/).
+ - View the full dbt project documentation [here](https://dobsontom.github.io/tails-active-retention/).
 
 ## Project Structure
 
