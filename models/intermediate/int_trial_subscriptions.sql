@@ -24,10 +24,14 @@ with trial_subscriptions as (
     inner join
         {{ ref('stg_pets') }} as pets
         on CAST(sub.pet_id as STRING) = CAST(pets.pet_id as STRING)
-    -- Since we're only concerned with active and converted trials, we filter 
-    -- to subscriptions with a trial_days value
+
+    -- We're only concerned with active and converted trials, so 
+    -- we can filter out rows without a trial_days value
     where
         sub.trial_days is not NULL
+        -- Restrict data to a dynamic five-year window
+        -- before we amplify rows with recursion later
+        and sub.start_at >= DATEADD(year, -5, CURRENT_DATE())
 )
 
 -- Select relevant fields for the downstream fact table
