@@ -4,7 +4,8 @@ select
     CAST(customer_id as STRING) as customer_id,          -- Foreign key
     CAST(pet_id as STRING) as pet_id,                    -- Foreign key
     subscription_type,
-    subscription_status,  -- Current-state field, useful for flagging currently active subscriptions
+    -- Current-state field, useful for flagging currently active subscriptions
+    subscription_status,
     tier,
     pricing_set_id,
     start_at as subscription_start_at,

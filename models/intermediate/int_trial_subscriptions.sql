@@ -8,8 +8,8 @@ with trial_subscriptions as (
 
         -- Calculate the trial end date
         case
-            -- If there is a converted_date, take the earliest of converted_date 
-            -- and the start date plus the trial length
+            -- If there is a converted_date, take the earliest of the 
+            -- converted date and the start date, plus the trial length
             when
                 pets.converted_date is not NULL
                 then LEAST(pets.converted_date, DATEADD(day, sub.trial_days, sub.start_at))
