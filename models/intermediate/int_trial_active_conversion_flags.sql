@@ -10,7 +10,8 @@ with apply_flags as (
         converted_date,
         active_day,
 
-        -- Active trial flag: If no conversion occurred, flag all days. Otherwise, flag days before the conversion
+        -- Active trial flag: If no conversion occurred, flag all days.
+        -- Otherwise, flag days before the conversion
         case
             when converted_date is NULL then 1
             when active_day < CAST(converted_date as DATE) then 1
