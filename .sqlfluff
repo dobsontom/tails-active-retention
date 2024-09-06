@@ -1,7 +1,8 @@
 [sqlfluff]
 dialect = snowflake
 templater = dbt
-exclude_rules = LT09,ST06,LT05
+max_line_length = 100
+exclude_rules = LT09,ST06
 processes = 0
 
 [sqlfluff:rules:capitalisation.keywords]
