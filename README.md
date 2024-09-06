@@ -88,7 +88,7 @@ This dbt project includes the following tests:
    ```
 
 3. **Configure `profiles.yml`**:
- - Update `profiles.yml` with your Snowflake credentials.
+  - Update `profiles.yml` with your Snowflake credentials.
 
 4. **Run dbt Models**:
    ```bash
