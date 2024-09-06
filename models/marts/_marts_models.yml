@@ -1,7 +1,7 @@
 version: 2
 
 models:
-  - name: fct_trial_activity
+  - name: fct_trial_activities
     description: "Fact table for analysing daily active trialists and conversion events for each subscription."
     columns:
       - name: subscription_id

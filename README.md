@@ -1,4 +1,4 @@
-![Tails.com Logo](./assets/tails-com-logo.png)
+![Tails.com Logo](./docs/tails-com-logo.png)
 
 # Retention and Active Dogs Challenge
 
@@ -22,6 +22,7 @@ tails-active-retention
 │       catalog.json
 │       index.html
 │       manifest.json
+│       tails-com-logo.png
 │
 ├───models
 │   ├───intermediate
@@ -31,9 +32,9 @@ tails-active-retention
 │   │       _int_models.yml
 │   │
 │   ├───marts
-│   │       dim_pet.sql
+│   │       dim_pets.sql
 │   │       dim_subscriptions.sql
-│   │       fct_trial_activity.sql
+│   │       fct_trial_activities.sql
 │   │       _marts_models.yml
 │   │
 │   └───staging
@@ -58,7 +59,7 @@ tails-active-retention
    - `int_active_conversion_flags`: Applies flags to indicate active trials and conversion events for each subscription on a daily basis.
 
 3. **Mart Models (`fct_` and `dim_`)**: These are the final fact and dimension models, optimised for analysis and reporting.
-   - `fct_trial_activity`: Fact table containing daily active trials and conversions data.
+   - `fct_trial_activities`: Fact table containing daily active trials and conversions data.
    - `dim_pets`: Dimension table containing pet attributes such as `pet_gender`, `pet_birth_date`, and `pet_created_at`.
    - `dim_subscriptions`: Dimension table containing subscription attributes such as `subscription_status`, `tier`, and dates related to the subscription lifecycle.
 
