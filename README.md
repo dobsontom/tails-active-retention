@@ -70,7 +70,7 @@ This dbt project includes the following tests:
 - **Uniqueness and Not Null Tests**:
   - Ensure that key fields (e.g., `subscription_id`, `pet_id`, `customer_id`) in the staging, intermediate, and mart models are unique and not null.
   
-- **Referential Integrity Tests**:
+- **Referential Integrity/Relationship Tests**:
   - Ensure that relationships between fact and dimension tables are preserved, for example:
     - Ensuring every `pet_id` in the fact table exists in `dim_pets`.
     - Ensuring every `subscription_id` in the fact table exists in `dim_subscriptions`.
