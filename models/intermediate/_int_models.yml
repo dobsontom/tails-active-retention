@@ -9,14 +9,23 @@ models:
         tests:
           - not_null
           - unique
+          - relationships:
+              to: ref('stg_subscriptions')
+              field: subscription_id
       - name: customer_id
         description: "Foreign key linking to the customer table."
         tests:
           - not_null
+          - relationships:
+              to: ref('stg_subscriptions')
+              field: customer_id
       - name: pet_id
         description: "Foreign key linking to the pet table."
         tests:
           - not_null
+          - relationships:
+              to: ref('stg_pets')  # Relationship to stg_pets
+              field: pet_id
       - name: trial_start_at
         description: "The date the trial started."
         tests:
@@ -35,14 +44,23 @@ models:
         description: "Unique identifier for the subscription."
         tests:
           - not_null
+          - relationships:
+              to: ref('int_trial_subscriptions')
+              field: subscription_id
       - name: customer_id
         description: "Foreign key linking to the customer table."
         tests:
           - not_null
+          - relationships:
+              to: ref('int_trial_subscriptions')
+              field: customer_id
       - name: pet_id
         description: "Foreign key linking to the pet table."
         tests:
           - not_null
+          - relationships:
+              to: ref('int_trial_subscriptions')
+              field: pet_id
       - name: active_day
         description: "A daily record representing an active trial day for the subscription."
         tests:
@@ -61,14 +79,23 @@ models:
         description: "Unique identifier for the subscription."
         tests:
           - not_null
+          - relationships:
+              to: ref('int_trial_active_days')
+              field: subscription_id
       - name: customer_id
         description: "Foreign key linking to the customer table."
         tests:
           - not_null
+          - relationships:
+              to: ref('int_trial_active_days')
+              field: customer_id
       - name: pet_id
         description: "Foreign key linking to the pet table."
         tests:
           - not_null
+          - relationships:
+              to: ref('int_trial_active_days')
+              field: pet_id
       - name: active_day
         description: "A daily record representing an active trial day for the subscription."
         tests:

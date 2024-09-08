@@ -9,14 +9,23 @@ models:
         tests:
           - not_null
           - unique
+          - relationships:
+              to: ref('dim_subscriptions')
+              field: subscription_id
       - name: customer_id
         description: "Foreign key linking to the customer."
         tests:
           - not_null
+          - relationships:
+              to: ref('dim_pets')
+              field: customer_id
       - name: pet_id
         description: "Foreign key linking to the pet."
         tests:
           - not_null
+          - relationships:
+              to: ref('dim_pets')
+              field: pet_id
       - name: active_day
         description: "The date for each day the trial is active or converted."
         tests:

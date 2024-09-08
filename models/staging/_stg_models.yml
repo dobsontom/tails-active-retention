@@ -14,6 +14,9 @@ models:
         description: "Foreign key linking to the customer who owns the pet."
         tests:
           - not_null
+          - relationships:
+              to: ref('stg_subscriptions')
+              field: customer_id
       - name: pet_created_at
         description: "The timestamp when the pet record was created."
         tests:
@@ -38,10 +41,16 @@ models:
         description: "Foreign key linking to the pet associated with the subscription."
         tests:
           - not_null
+          - relationships:
+              to: ref('stg_pets')
+              field: pet_id
       - name: customer_id
         description: "Foreign key linking to the customer who owns the subscription."
         tests:
           - not_null
+          - relationships:
+              to: ref('stg_pets')
+              field: customer_id
       - name: subscription_type
         description: "The type of subscription (e.g., food, medicine)."
       - name: subscription_status
